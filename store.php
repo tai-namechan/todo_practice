@@ -9,9 +9,12 @@ require_once('Models/Task.php');
 // データの受け取り
 // create.phpからのデータの受け取り
 // 欲しい内容はtitleとcontentsの内容
+// スーパーグローバル変数
 $title = $_POST['title'];
 $contents = $_POST['contents'];
 // 行われたときの時間を記録する
+// date関数
+// YYYY西暦
 $currentTime = date("Y/m/d H:i:s");
 // DBへのデータ保存
 // task.phpの中にあるメソッドを実行する
@@ -21,5 +24,5 @@ $task->create([$title, $contents, $currentTime]);
 // リダイレクト
 // Postボタンを押した後に最初のトップページに戻るコード
 header('location:index.php');
-
+// 終了の合図
 exit;
