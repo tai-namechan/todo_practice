@@ -3,13 +3,18 @@
 // update_function
 // * 下記を追加
 // 1. ファイルの読み込み
-
+require_once('Models/Task.php');
+require_once('function.php');
 
 // 2. データの受け取り
-
+// index.phpのeditの部分でクリックされた値を受け取る
+$id = $_GET['id'];
 
 // 3. DBへのデータ保存
-
+// 引数としてidを渡す
+// 一行でインスタンスかとメソッドの呼び出しを同時に行なっている
+// findByIdに波線があるのはメソッドが定義されていないから
+$task = (new Task())->findById($id);
 
 ?>
 <!DOCTYPE html>

@@ -23,7 +23,15 @@ class Task extends Model
         $stmt->execute($data);
     }
     // * update()を以下に追加する
-    
+    // ここで引数として受け取るのがupdate.phpでわたした$title,contents,id
+    public function update($data)
+    {
+        // 準備
+        // whereでテーブルの中からどのデータを編集するのか,idでここで受け取ったデータの中の3つめの変数にidがはいる
+        $stmt = $this->db_manager->dbh->prepare('UPDATE ' . $this->table . ' SET title = ?, contents = ? WHERE id = ?');
+        // 実行
+        $stmt->execute($data);
+    }
 
 
 
