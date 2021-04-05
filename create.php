@@ -48,3 +48,29 @@
 </body>
 
 </html>
+<!-- CRUD処理
+C:create 
+- insert文
+
+R:read
+- select文
+
+U: update
+- update文
+
+D: delate
+- delete文 -->
+
+<!-- create機能を作りたい -->
+<!-- 
+    →create.phpにフォームがあります
+    フォームはデータを送信するもの:form(input)タグ、aタグ
+    データの送信方法:POST,GET
+    <form action="" method="">
+    form:GET,POST
+    a:GET
+
+    GET:urlに?が必ずつく
+    POST:個人情報
+
+    action:データを飛ばしたい先遷移先 -->
