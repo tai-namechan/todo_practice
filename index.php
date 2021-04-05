@@ -6,13 +6,32 @@ require_once('function.php');
 
 
 // データの取得
-// taskクラスをインスタンス化
+// taskクラスをインスタンス化実体化
 $task = new Task();
 // Model.phpのgetallメソッドを使ってtasksテーブルの中にある全てのデータを取得する。そしてtasksという変数の中に代入する
 $tasks = $task->getAll();
+
+// fetch()→一行ずつ取得する
+// fechAll()→全部
+
+// 検証(デバッグ)
 // tasksの中身を表示している
 // var_dump($tasks);
+// die;
+// デバックした内容だけを表示する
+// var_dump()みやすくするecho'<pre>';を前後に入れる
 
+// $DB = ['id' => 1, 'title' => 'タイトル'];
+// echo $DB['title'];
+
+// $DB = [['id' => 1, 'title' => 'タイトル'], ['id' => 2, 'title' => 'タイトル2']];
+// echo $DB[0]['title'];
+// 呼び出すとき配列何番めの が必要
+
+// $DB = ['key' => ['id' => 1, 'title' => 'タイトル'], 'key2' => ['id' => 2, 'title' => 'タイトル2']];
+// echo $DB['key']['title'];
+
+// 配列：ループで表示(foreach,for)
 
 ?>
 <!DOCTYPE html>
@@ -60,12 +79,14 @@ $tasks = $task->getAll();
         </div>
 
         <div class="row p-3">
+        <!-- コロン構文 -->
         <?php foreach ($tasks as $task) : ?>
             <div class="col-sm-6 col-md-4 col-lg-3 py-3 py-3">
                 <div class="card">
                     <img src="https://picsum.photos/200" class="card-img-top" alt="...">
                     <div class="card-body">
                     <!-- したのhはfunction.php殻読み込んだ関数h -->
+                    <!-- ?= は php echoの省略 -->
                         <h5 class="card-title"><?= h($task["title"]); ?></h5>
                         <p class="card-text">
                             <?= h($task["contents"]); ?>
@@ -77,7 +98,7 @@ $tasks = $task->getAll();
                                 <!-- * valueの中にtaskのidが入るようにする -->
                                 <!-- クリックしたタスクidをdelete.phpに渡す値の準備 -->
                                 <input type="hidden" name="id" 
-                                value="<?= h($task['id']); ?>">
+                                value="<?= $task['id']; ?>">
                                 <button type="submit" class="btn text-danger">DELETE</button>
                             </form>
                         </div>

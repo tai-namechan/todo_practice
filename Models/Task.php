@@ -8,6 +8,7 @@ class Task extends Model
     protected $table = 'tasks';
 
     // 新規作成に使用するメソッド
+    // (引数)
     public function create($data)
     {
         // DBに保存

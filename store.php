@@ -16,13 +16,22 @@ $contents = $_POST['contents'];
 // date関数
 // YYYY西暦
 $currentTime = date("Y/m/d H:i:s");
+
+// ちゃんとデータが送られてきたかvar_dump()で確認するがstore.phpは見えないから
+// var_dump($title);
+// die;
+// で処理を終わらせちゃう
+
 // DBへのデータ保存
 // task.phpの中にあるメソッドを実行する
 $task = new Task();
 // taskのモデルの中のcreateメソッドを実行
 $task->create([$title, $contents, $currentTime]);
 // リダイレクト
+// create.php → store.php → index.php
+// create.php → index.php
 // Postボタンを押した後に最初のトップページに戻るコード
 header('location:index.php');
-// 終了の合図
+// ここで処理終了の合図
+// DBの接続の終了の合図で書かれている
 exit;
